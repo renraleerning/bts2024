@@ -29,7 +29,7 @@
 
     <div class="mb-3">
         <label for="no_hp" class="form-label">Tempat Tujuan</label>
-        <input type="text" class="form-control" id="no_hp" name="no_hp">
+        <input type="text" class="form-control" id="tujuan" name="tujuan">
     </div>
     <div class="mb-3">
         <label for="pegawai" class="form-label">Pegawai Yang Dituju</label>

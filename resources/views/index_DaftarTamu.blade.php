@@ -11,7 +11,7 @@
       <th scope="col">Foto</th>
       <th scope="col">Identitas</th>
       <th scope="col">Keperluan</th>
-      <th scope="col">Tujuan Ke</th>
+      <th scope="col">Tujuan & Waktu</th>
       <th scope="col">Lampiran</th>
       <th scope="col">Aksi</th>
     </tr>
@@ -20,21 +20,25 @@
    @forelse ($DaftarTamus as $tamu) 
     <tr>
       <th scope="row">{{$tamu->id}}</th>    
-      <td><img src="{{ asset('/storage/tamu/'.$tamu->image) }}" class="rounded" style="width: 150px"></td>
+      <td><img src="{{ asset('/storage/foto/'.$tamu->foto) }}" class="rounded" style="width: 150px; height:100px"></td>
       <td>
         <b>{{$tamu->nama}}</b>
-        <p>({{$tamu->jk}})</p>
-        <p>{{$tamu->alamat}}</p>
-        <p>No WA : <b>{{$tamu->no_wa}}</b></p>
+        <p>({{$tamu->jk}})<br>{{$tamu->alamat}}<br>No WA : <b>{{$tamu->no_wa}}</b></p>
       </td>
       <td>{{$tamu->keperluan}}</td>
-      <td>{{$tamu->tujuan}}</td>
-      <td>-
-      <!-- {{ asset('/storage/lampiran/'.$tamu->lampiran) }} -->
+      <td>{{$tamu->tujuan}}<br><b>{{$tamu->created_at->format('d-m-Y')}}</b><br><b>{{$tamu->created_at->format('h:i')}}</b></td>
+      <td>
+        <?php
+        if($tamu->lampiran!='-'){
+          ?>
+          <a href="{{ asset('/storage/lampiran/'.$tamu->lampiran) }}">unduh</a>
+          <?php
+        }
+        ?>
       </td>
       <td>
-      <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('pegawai.destroy', $tamu->id) }}" method="POST">
-      <a href="{{ route('pegawai.edit', $tamu->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+      <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('tamu.destroy', $tamu->id) }}" method="POST">
+      <!-- <a href="{{ route('pegawai.edit', $tamu->id) }}" class="btn btn-sm btn-primary">EDIT</a> -->
       @csrf
       @method('DELETE')
       <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

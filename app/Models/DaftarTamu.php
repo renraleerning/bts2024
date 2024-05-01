@@ -17,5 +17,6 @@ class DaftarTamu extends Model
         'tujuan',
         'lampiran',
         'jk',
+        'pegawai',
     ];
 }
