@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Pegawai;
+use App\Models\Jabatan;
 use Illuminate\Http\RedirectResponse;
 
 class Controller_pegawai extends Controller
@@ -15,8 +16,9 @@ class Controller_pegawai extends Controller
         return view('index_pegawai', compact('Pegawais'));
     }
     public function create(): View
-{
-    return view('pegawai_create');
+{   
+    $Jabatans = Jabatan::orderBy('nama_jabatan', 'ASC')->get();
+    return view('pegawai_create',compact('Jabatans'));
 }
 public function store(Request $request)
 {

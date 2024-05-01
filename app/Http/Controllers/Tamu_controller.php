@@ -49,7 +49,7 @@ public function store(Request $request): RedirectResponse
         $file = $folderPath . $fileName;
         Storage::put($file, $image_base64);
     }else{
-        $fileName='default.jpg';
+        $fileName='default.svg';
     }
     if ($request->hasFile('lampiran')) {
 

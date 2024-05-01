@@ -10,12 +10,19 @@
         <input type="text" class="form-control" id="nip" name="nip">
     </div>
     <div class="mb-3">
-        <label for="nama" class="form-label">NAMA</label>
+        <label for="nama" class="form-label">Nama</label>
         <input type="text" class="form-control" id="nama" name="nama">
     </div>
     <div class="mb-3">
         <label for="jabatan" class="form-label">Jabatan</label>
-        <input type="text" class="form-control" id="jabatan" name="jabatan">
+        <!-- <input type="text" class="form-control" id="jabatan" name="jabatan"> -->
+        <select name="jabatan" id="jabatan" class="form-select">
+        @forelse($Jabatans as $jabatan)
+        <option value="{{$jabatan->nama_jabatan}}">{{$jabatan->nama_jabatan}}</option>
+        @empty
+        <option value="Data tidak ada">Data tidak ada</option>
+        @endforelse
+        </select>
     </div>
     <div class="mb-3">
         <label for="bagian" class="form-label">Bagian</label>

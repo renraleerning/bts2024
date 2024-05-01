@@ -20,13 +20,40 @@
    @forelse ($DaftarTamus as $tamu) 
     <tr>
       <th scope="row">{{$tamu->id}}</th>    
-      <td><img src="{{ asset('/storage/foto/'.$tamu->foto) }}" class="rounded" style="width: 150px; height:100px"></td>
+      <td>
+      <?php
+        if(strcmp($tamu->foto,'default.svg')==0){
+          ?>
+          <img src="{{URL::asset('images/asset/profile.svg'); }}" class="rounded" style="width: 140px; height:100px">
+          <?php
+        }else{
+          ?>
+          <img src="{{ asset('/storage/foto/'.$tamu->foto) }}" class="rounded" style="width: 140px; height:100px">
+          <?php
+        }
+      ?>
+      </td>
       <td>
         <b>{{$tamu->nama}}</b>
         <p>({{$tamu->jk}})<br>{{$tamu->alamat}}<br>No WA : <b>{{$tamu->no_wa}}</b></p>
       </td>
       <td>{{$tamu->keperluan}}</td>
-      <td>{{$tamu->tujuan}}<br><b>{{$tamu->created_at->format('d-m-Y')}}</b><br><b>{{$tamu->created_at->format('h:i')}}</b></td>
+      <td>{{$tamu->tujuan}}
+      <table>
+        <!-- <tr>
+          <td>Pegawai</td>
+          <td>: <b>{{$tamu->pegawai}}</b></td>
+        </tr> -->
+        <tr>
+          <td>Tanggal</td>
+          <td>: <b>{{$tamu->created_at->format('d-m-Y')}}</b></td>
+        </tr>
+        <tr>
+          <td>Waktu</td>
+          <td>: <b>{{$tamu->created_at->format('h:i')}}</b></td>
+        </tr>
+      </table>  
+     </td>
       <td>
         <?php
         if($tamu->lampiran!='-'){

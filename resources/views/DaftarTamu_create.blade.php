@@ -29,7 +29,7 @@
 
     <div class="mb-3">
         <label for="no_hp" class="form-label">Tempat Tujuan</label>
-        <input type="text" class="form-control" id="tujuan" name="tujuan">
+        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Stand KCD WIlayah VIII">
     </div>
     <div class="mb-3">
         <label for="pegawai" class="form-label">Pegawai Yang Dituju</label>
@@ -44,7 +44,7 @@
     </div>
     <div class="mb-3">
     <label for="keperluan" class="form-label">Keperluan Bertamu</label>
-        <textarea type="text" class="form-control" id="keperluan" name="keperluan"></textarea>
+        <textarea type="text" class="form-control" id="keperluan" name="keperluan">Mengunjungi Stand KCD Wilayah VIII</textarea>
     </div>
     <div class="mb-3">
     <label for="lampiran" class="form-label">Lampiran</label>
@@ -56,16 +56,14 @@
     @enderror
     </div>
     <div class="mb-3">
-    <label for="keperluan" class="form-label">Foto</label>
     <div class="container text-center">
   <div class="row">
-    <table>
+    <table class="w-50">
         <tr>
             <td>
+                <p><br>Foto Preview:</p>
                 <div id="my_camera"></div>
                     <br/>
-                    <input type=button value="Ambil Foto" onClick="take_snapshot()">
-                    <input type="hidden" name="foto" class="image-tag">
                 </div>
             </td>
             <td>
@@ -74,6 +72,11 @@
             </td>
         </tr>
     </table>
+    <input type=button value="Ambil Foto" onClick="take_snapshot()" class="btn btn-secondary fa-solid fa-camera" style="height:100px; margin-top:100px; width:200px">
+    <input type="hidden" name="foto" class="image-tag">
+    <br>
+    <br>
+    <br>
     </div>
     <div class="mb-3">
         <input type="submit" value="submit" class="form-control btn btn-success" name="submit">
@@ -83,7 +86,7 @@
 <script language="JavaScript">
     Webcam.set({
         width: 300,
-        height: 300,
+        height: 226,
         image_format: 'jpeg',
         jpeg_quality: 90
     });   
@@ -91,7 +94,7 @@
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
             $(".image-tag").val(data_uri);
-            document.getElementById('results').innerHTML = '<img width="300px" height="250px" src="'+data_uri+'"/>';
+            document.getElementById('results').innerHTML = '<img width="300px" height="225px" src="'+data_uri+'"/>';
         } );
     }
 </script>
