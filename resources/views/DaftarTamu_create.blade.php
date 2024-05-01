@@ -12,8 +12,7 @@
     </div>
     <div class="mb-3">
         <label for="alamat" class="form-label">Alamat</label>
-        <textarea type="text" class="form-control" id="alamat" name="alamat">
-        </textarea>
+        <textarea type="text" class="form-control" id="alamat" name="alamat"></textarea>
     </div>
     <div class="mb-3">
         <label for="no_wa" class="form-label">Nomor Whatsapp</label>
@@ -34,12 +33,18 @@
     </div>
     <div class="mb-3">
         <label for="pegawai" class="form-label">Pegawai Yang Dituju</label>
-        <input type="text" class="form-control" id="pegawai" name="pegawai">
+        <!-- <input type="text" class="form-control" id="pegawai" name="pegawai"> -->
+        <select name="pegawai" id="pegawai" class="form-select">
+        @forelse($Pegawais as $pegawai)
+        <option value="{{$pegawai->nama}}">{{$pegawai->nama}}</option>
+        @empty
+        <option value="Data tidak ada">Data tidak ada</option>
+        @endforelse
+        </select>
     </div>
     <div class="mb-3">
     <label for="keperluan" class="form-label">Keperluan Bertamu</label>
-        <textarea type="text" class="form-control" id="keperluan" name="keperluan">
-        </textarea>
+        <textarea type="text" class="form-control" id="keperluan" name="keperluan"></textarea>
     </div>
     <div class="mb-3">
     <label for="lampiran" class="form-label">Lampiran</label>
@@ -60,7 +65,7 @@
                 <div id="my_camera"></div>
                     <br/>
                     <input type=button value="Ambil Foto" onClick="take_snapshot()">
-                    <input type="hidden" name="image" class="image-tag">
+                    <input type="hidden" name="foto" class="image-tag">
                 </div>
             </td>
             <td>
